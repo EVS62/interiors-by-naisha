@@ -1,119 +1,121 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
+// Logo - place 3TYPEDLOGO_transparent.png in your public folder
+const LOGO_URL = "/3TYPEDLOGO_transparent.png";
+
 const PROJECTS = [
   {
     id: 1,
-    name: "The Solstice Living Room",
+    name: "Yorkville Residence",
     type: "Residential",
-    cover: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80",
-    summary: "A sun-drenched living space reimagined with warm layered neutrals, sculptural furniture, and floor-to-ceiling linen drapes. Every element was chosen to invite pause and presence—a room designed not just to look at, but to truly live in.",
+    cover: "/images/yorkville_living.jpg",
+    summary: "To properly display the residence's stunning city views, a well-thought-out spatial plan was necessary. We created a more balanced, welcoming layout by centering the room and moving the furniture away from the windows to let in an abundance of natural light while maintaining uninterrupted sightlines. Handcrafted herringbone flooring was uncovered beneath dated wall-to-wall carpeting and beautifully restored.",
     gallery: [
-      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80",
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
+      "/images/yorkville_living.jpg",
+      "/images/yorkville_dining.jpg",
+      "/images/yorkville_bedroom.jpg",
     ],
     highlights: [
-      "Custom built-in shelving with integrated ambient lighting",
-      "Layered neutral palette with warm plaster walls",
-      "Oversized linen sectional with down-filled cushions",
-      "Curated vintage accent pieces sourced locally",
-      "Hand-knotted wool area rug in oatmeal tones",
+      "Restored handcrafted herringbone flooring beneath dated carpeting",
+      "Centered layout maximizing city views and natural light",
+      "Classic Kohler tub with marble-look porcelain tile surround",
+      "Chrome fixtures from the Miseno collection throughout",
+      "Curated material palette: walnut floors, porcelain tile, black leather, linen textile",
     ],
   },
   {
     id: 2,
-    name: "The Cedar Street Refresh",
+    name: "Lower East Side Residence",
     type: "Residential",
-    cover: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-    summary: "A full-home refresh that honored the original architecture while introducing contemporary warmth. The design balances clean lines with organic textures, creating a space that feels both modern and deeply comfortable.",
+    cover: "/images/les_living.jpg",
+    summary: "This Lower East Side residence underwent a full-scale renovation, elevated by the discovery of original brick walls concealed within the space. Once restored, the brick became the project's defining focal point. A floor-to-ceiling built-in was introduced, anchoring the room while providing both function and architectural presence. Soundproof windows maximize natural light without compromising comfort.",
     gallery: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+      "/images/les_brick_living.jpg",
+      "/images/les_kitchen.jpg",
+      "/images/les_dining.jpg",
     ],
     highlights: [
-      "Original hardwood floors restored and refinished",
-      "Open-concept kitchen with fluted oak island",
-      "Warm brass hardware throughout",
-      "Statement pendant lighting in entryway",
-      "Mud room redesign with custom storage",
+      "Original brick walls discovered and restored as focal point",
+      "Floor-to-ceiling entertainment built-in with custom shelving",
+      "Layered lighting strategy with dedicated dining and art illumination",
+      "Insulated soundproof ceiling for intimate retreat feel",
+      "Curated layering of textiles, warm woods, and nuanced lighting",
     ],
   },
   {
     id: 3,
-    name: "Modern Cozy Condo",
+    name: "NoHo Residence",
     type: "Residential",
-    cover: "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&q=80",
-    summary: "A compact urban condo transformed into a sanctuary of intentional comfort. Smart space planning and a cohesive warm palette make this 900-square-foot home feel twice its size without sacrificing coziness.",
+    cover: "/images/noho_living.jpg",
+    summary: "This project consisted of comprehensive styling, furniture sourcing, and thoughtful space planning, all executed with photography in mind. The result is a refined urban residence that balances modern comfort with editorial polish.",
     gallery: [
-      "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&q=80",
-      "https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80",
-      "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=800&q=80",
+      "/images/noho_living.jpg",
+      "/images/les_nook.jpg",
+      "/images/les_bedroom.jpg",
     ],
     highlights: [
-      "Multi-functional living and dining zone",
-      "Floor-to-ceiling drapery to elongate ceilings",
-      "Bouclé and velvet upholstery mix",
-      "Concealed storage solutions throughout",
-      "Warm LED cove lighting in bedroom alcove",
+      "Comprehensive furniture sourcing and styling",
+      "Thoughtful space planning for photography-ready interiors",
+      "Statement pendant lighting as sculptural elements",
+      "Warm wood tones balanced with neutral upholstery",
+      "Editorial-quality finish throughout",
     ],
   },
   {
     id: 4,
-    name: "Warm Minimalist Kitchen",
+    name: "The TriBeCa Residence",
     type: "Residential",
-    cover: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
-    summary: "A kitchen stripped to its essentials yet rich in material detail. White oak cabinetry, honed stone countertops, and a palette of cream and warm taupe create a space that feels clean but never cold.",
+    cover: "https://www.compass.com/m/0/487ec327-5e5f-47a6-b598-9c7e216cf711/origin.webp",
+    summary: "A stunning high-floor corner unit in the heart of TriBeCa with curved floor-to-ceiling windows and breathtaking panoramic views. Elegant proportions, hardwood floors, and crown moldings create the perfect setting for both lively gatherings and intimate evenings.",
     gallery: [
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
-      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800&q=80",
-      "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80",
+      "https://www.compass.com/m/0/487ec327-5e5f-47a6-b598-9c7e216cf711/origin.webp",
+      "/images/yorkville_terrace.jpg",
+      "/images/yorkville_living2.jpg",
     ],
     highlights: [
-      "White oak flat-panel cabinetry with soft-close hardware",
-      "Honed Calacatta countertops with waterfall edge",
-      "Integrated appliance panels for seamless look",
-      "Unlacquered brass faucet and pulls",
-      "Open shelving with curated ceramics display",
-      "Under-cabinet task lighting in warm 2700K",
+      "Curved floor-to-ceiling windows with panoramic skyline views",
+      "Custom galley kitchen with copious counter and cabinet space",
+      "King-sized primary bedroom with en-suite bath overlooking Hudson River",
+      "Crown moldings and elegant hardwood flooring throughout",
+      "Split layout converting from two-bedroom to three-bedroom plus study",
     ],
   },
   {
     id: 5,
-    name: "Soft Luxury Primary Suite",
+    name: "The Murray Hill Studio",
     type: "Residential",
-    cover: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
-    summary: "A primary suite designed as a true retreat. Enveloping textures, a tonal palette of stone and sand, and considered lighting create an atmosphere of calm luxury that makes every evening feel like a getaway.",
+    cover: "https://www.compass.com/m/0/a4cbb540-a925-41f3-b308-c994166877c3/origin.webp",
+    summary: "A recently renovated pre-war studio capturing quintessential Art Deco living with high-beamed ceilings, large casement windows, and elegant arched passageways. New hardwood floors and stainless steel appliances bring contemporary comfort to timeless architectural detail.",
     gallery: [
-      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80",
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
+      "https://www.compass.com/m/0/a4cbb540-a925-41f3-b308-c994166877c3/origin.webp",
+      "/images/yorkville_bath1.jpg",
+      "/images/les_bedroom.jpg",
     ],
     highlights: [
-      "Upholstered wall panels in natural linen",
-      "Custom platform bed with integrated nightstands",
-      "Layered window treatments for light control",
-      "Walk-in closet with boutique-style display",
-      "En-suite bathroom with heated stone flooring",
+      "Art Deco architectural details preserved and highlighted",
+      "High-beamed ceilings with large casement windows",
+      "Brand-new hardwood floors throughout living area",
+      "Gracious entrance foyer with elegant arched passageways",
+      "Newly renovated kitchen with stainless steel appliances",
     ],
   },
   {
     id: 6,
-    name: "The Atelier Workspace",
+    name: "Selah City Church",
     type: "Commercial",
-    cover: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80",
-    summary: "A creative studio space designed to inspire focus and collaboration. Natural materials ground the space while thoughtful zoning separates deep-work areas from gathering spots, all unified by a palette of warm whites and natural wood.",
+    cover: "/images/les_brick_living.jpg",
+    summary: "A community space designed to inspire gathering and connection. Exposed brick, warm woods, and industrial lighting create an inviting atmosphere that balances reverence with warmth, making every visitor feel at home.",
     gallery: [
-      "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80",
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
-      "https://images.unsplash.com/photo-1618219944342-824e40a13285?w=800&q=80",
+      "/images/les_brick_living.jpg",
+      "/images/les_dining.jpg",
+      "/images/les_kitchen.jpg",
     ],
     highlights: [
-      "Zoned layout for focus work and collaboration",
-      "Acoustic paneling in natural wool felt",
-      "Standing-height communal table in white oak",
-      "Biophilic design with integrated planters",
-      "Task lighting with adjustable color temperature",
+      "Exposed brick walls as defining design element",
+      "Custom walnut and iron built-in shelving system",
+      "Industrial pendant lighting with warm Edison bulbs",
+      "Curated mix of modern and vintage seating",
+      "Warm material palette unifying the entire space",
     ],
   },
 ];
@@ -121,21 +123,21 @@ const PROJECTS = [
 const BEFORE_AFTER = [
   {
     id: 1,
-    name: "The Solstice Living Room",
+    name: "Yorkville Residence",
     before: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80",
-    after: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80",
+    after: "/images/yorkville_living.jpg",
   },
   {
     id: 2,
-    name: "Warm Minimalist Kitchen",
+    name: "Lower East Side Residence",
     before: "https://images.unsplash.com/photo-1556909190-eccf4a8bf97a?w=600&q=80",
-    after: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80",
+    after: "/images/les_brick_living.jpg",
   },
   {
     id: 3,
-    name: "Soft Luxury Primary Suite",
+    name: "NoHo Residence",
     before: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=600&q=80",
-    after: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80",
+    after: "/images/noho_living.jpg",
   },
 ];
 
@@ -218,6 +220,32 @@ body {
 }
 
 .nav-brand:hover { opacity: 0.7; }
+
+.nav-logo {
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  filter: invert(15%) sepia(8%) saturate(600%) hue-rotate(350deg);
+}
+
+.nav-logo:hover { opacity: 0.7; }
+
+.hero-logo {
+  height: clamp(60px, 12vw, 120px);
+  width: auto;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  filter: brightness(10);
+}
+
+.footer-logo {
+  height: 32px;
+  width: auto;
+  filter: brightness(0.7);
+}
 
 .nav-links {
   display: flex;
@@ -1092,11 +1120,11 @@ function HomePage({ navigate }) {
       <div className="hero">
         <img
           className="hero-img"
-          src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1600&q=85"
-          alt="Elegant warm interior living space with natural light"
+          src="/images/hero.jpg"
+          alt="Lower East Side living room with exposed brick and curated design"
         />
         <div className="hero-overlay">
-          <h1 className="hero-brand">Interiors by Naisha</h1>
+          <img src={LOGO_URL} alt="Interiors by Naisha" className="hero-logo" />
           <p className="hero-tagline">Elevated interiors with warmth and intention.</p>
           <div className="hero-ctas">
             <button className="btn-primary" onClick={() => navigate("projects")}>View Projects</button>
@@ -1362,7 +1390,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <div className="footer-brand">Interiors by Naisha</div>
+        <div className="footer-brand"><img src={LOGO_URL} alt="Interiors by Naisha" className="footer-logo" /></div>
         <div className="footer-socials">
           <a className="footer-social-link" href="https://instagram.com/interiorsbynaisha" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a className="footer-social-link" href="https://tiktok.com/@interiorsbynaisha" target="_blank" rel="noopener noreferrer">TikTok</a>
@@ -1430,7 +1458,7 @@ export default function App() {
 
       {/* Nav */}
       <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
-        <div className="nav-brand" onClick={() => navigate("home")}>Interiors by Naisha</div>
+        <div className="nav-brand" onClick={() => navigate("home")}><img src={LOGO_URL} alt="Interiors by Naisha" className="nav-logo" /></div>
         <ul className="nav-links">
           {NAV_ITEMS.map((item) => (
             <li
