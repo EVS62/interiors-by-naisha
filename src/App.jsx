@@ -209,6 +209,14 @@ body {
   box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
+.nav.scrolled .nav-link {
+  color: #B8956A;
+}
+
+.nav.scrolled .nav-logo {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(25%) saturate(600%) hue-rotate(345deg) brightness(90%) contrast(90%);
+}
+
 .nav-brand {
   font-family: var(--font-serif);
   font-size: 1.25rem;
