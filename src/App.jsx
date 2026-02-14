@@ -195,7 +195,7 @@ body {
   right: 0;
   z-index: 100;
   padding: 0 clamp(1.5rem, 4vw, 4rem);
-  height: 72px;
+  height: 85px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -222,7 +222,7 @@ body {
 .nav-brand:hover { opacity: 0.7; }
 
 .nav-logo {
-  height: 40px;
+  height: 70px;
   width: auto;
   cursor: pointer;
   transition: opacity 0.3s;
@@ -232,7 +232,7 @@ body {
 .nav-logo:hover { opacity: 0.7; }
 
 .hero-logo {
-  height: clamp(60px, 12vw, 120px);
+  height: clamp(80px, 16vw, 180px);
   width: auto;
   margin-bottom: 1.5rem;
   opacity: 0;
@@ -242,7 +242,7 @@ body {
 }
 
 .footer-logo {
-  height: 32px;
+  height: 44px;
   width: auto;
   filter: brightness(0.7);
 }
