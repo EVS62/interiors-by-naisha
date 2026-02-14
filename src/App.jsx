@@ -226,7 +226,7 @@ body {
   width: auto;
   cursor: pointer;
   transition: opacity 0.3s;
-  filter: invert(15%) sepia(8%) saturate(600%) hue-rotate(350deg);
+  filter: brightness(0) saturate(100%) invert(88%) sepia(15%) saturate(500%) hue-rotate(345deg) brightness(102%) contrast(92%);
 }
 
 .nav-logo:hover { opacity: 0.7; }
@@ -259,7 +259,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--charcoal);
+  color: #EEDBC1;
   cursor: pointer;
   position: relative;
   padding: 4px 0;
