@@ -1273,7 +1273,7 @@ function AboutPage() {
         <FadeIn>
           <img
             className="about-headshot"
-            src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&q=80"
+            src="/images/naisha-headshot.jpg"
             alt="Naisha — Interior Designer"
           />
         </FadeIn>
